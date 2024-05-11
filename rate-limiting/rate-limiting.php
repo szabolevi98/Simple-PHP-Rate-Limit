@@ -13,7 +13,7 @@ $fileSize = filesize($dbFilePath);
 if ($fileSize !== false && $fileSize > $maxFileSize) { // It should never reach the limit. But if ever, we're deleting the db to avoid long processing time.
     file_put_contents($dbFilePath, '');
 } else {
-    $dbFile = file_get_contents($dbFilePath, LOCK_EX)
+    $dbFile = file_get_contents($dbFilePath, LOCK_EX);
     $oldDb = json_decode($dbFile, true);
     $newDb = [];
     foreach ($oldDb as $oldDbValue) {
