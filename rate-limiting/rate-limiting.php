@@ -1,7 +1,7 @@
 <?php
 /* Simple PHP Rate Limiting */
-$maxRequests = '50';
-$interval = '300';
+$maxRequests = "50";
+$interval = "300";
 $dbFilePath = "rate-limiting/database.json";
 $maxFileSize = 10 * 1024 * 1024;
 
