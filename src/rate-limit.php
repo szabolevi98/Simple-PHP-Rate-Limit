@@ -81,7 +81,7 @@ class RateLimit {
         }
 
         $ipHash = hash('sha256', $this->getUserIP());
-        $filePath = $this->cachePath . '/' . $ipHash . '.json';
+        $filePath = $this->cachePath . "/" . $ipHash . ".json";
         $currentTime = time();
         $requests = file_exists($filePath) ? json_decode(file_get_contents($filePath), true) : [];
 
