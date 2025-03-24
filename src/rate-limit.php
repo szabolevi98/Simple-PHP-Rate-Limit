@@ -56,7 +56,7 @@ class RateLimit {
         int $maxRequests = 50,
         int $interval = 300,
         string $cachePath = "./data",
-        int $cleanupChance = 5,
+        int $cleanupChance = 3,
         int $cleanupThreshold = 60*60*24*7,
         string $message = "Too many requests!"
     ) {
