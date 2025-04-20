@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Rate Limit
- * @version     v1.1.0
+ * @version     v1.2.0
  * @author      Szabó Levente
  * @link        https://github.com/szabolevi98
  */
@@ -49,22 +49,22 @@ class RateLimit {
      * @param int $interval
      * @param string $cachePath
      * @param int $cleanupChance
-     * @param int $cleanupThreshold
+     * @param int|null $cleanupThreshold
      * @param string $message
      */
     public function __construct(
-        int $maxRequests = 50,
+        int $maxRequests = 75,
         int $interval = 300,
         string $cachePath = "./data",
         int $cleanupChance = 3,
-        int $cleanupThreshold = 60*60*24*7,
+        ?int $cleanupThreshold = null,
         string $message = "Too many requests!"
     ) {
         $this->maxRequests = $maxRequests;
         $this->interval = $interval;
         $this->cachePath = $cachePath;
         $this->cleanupChance = $cleanupChance;
-        $this->cleanupThreshold = $cleanupThreshold;
+        $this->cleanupThreshold = $cleanupThreshold ?: $interval + 30;
         $this->message = $message;
         if (!is_dir($this->cachePath)) {
             mkdir($this->cachePath, 0755, true);
